@@ -61,8 +61,9 @@ export default function Home() {
         business: formData.business
       });
 
-      const response = await fetch('https://script.google.com/macros/s/AKfycbyut9PYhIVidEmiGhk2yQpW7lI41bP_ahKeQw94gCq9x8In2MbVg1U-pL8J9eVik4nc/exec', {
+      const response = await fetch('https://script.google.com/macros/s/AKfycbw1Vkv8B2xTnSmB670_LmY5JKMLXY-B_Lmyxc34xT2KzIZWQ_50qRKTE4hsXpaAvybo/exec', {
         method: 'POST',
+        mode: 'cors',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
