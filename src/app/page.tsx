@@ -60,6 +60,12 @@ export default function Home() {
       if (response.ok && result.success) {
         setSubmitStatus('success');
         setFormData({ name: '', phone: '', email: '', business: '' });
+        
+        // Track conversion with Meta Pixel
+        if (typeof window !== 'undefined' && (window as any).fbq) {
+          (window as any).fbq('track', 'Lead');
+          (window as any).fbq('track', 'CompleteRegistration');
+        }
       } else {
         setSubmitStatus('error');
       }
