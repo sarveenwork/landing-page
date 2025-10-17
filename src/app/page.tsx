@@ -47,22 +47,27 @@ export default function Home() {
     setSubmitStatus('');
 
     try {
-      // Use FormData to avoid CORS issues with Google Apps Script
-      const formDataToSend = new FormData();
-      formDataToSend.append('name', formData.name);
-      formDataToSend.append('phone', formData.phone);
-      formDataToSend.append('email', formData.email);
-      formDataToSend.append('business', formData.business);
+      // Create URL-encoded form data for Google Apps Script
+      const params = new URLSearchParams();
+      params.append('name', formData.name);
+      params.append('phone', formData.phone);
+      params.append('email', formData.email);
+      params.append('business', formData.business);
 
       const response = await fetch('https://script.google.com/macros/s/AKfycbwLCzlVQYyZBgnEXirLUazxA0PbCD1Wwmhc5CnxQc8T7tpjqXjEBtSp-zwwivRE59pT/exec', {
         method: 'POST',
-        mode: 'no-cors',
-        body: formDataToSend,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: params.toString(),
       });
 
-      // With no-cors mode, we can't read the response, so we assume success
-      setSubmitStatus('success');
-      setFormData({ name: '', phone: '', email: '', business: '' });
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: '', phone: '', email: '', business: '' });
+      } else {
+        setSubmitStatus('error');
+      }
     } catch {
       setSubmitStatus('error');
     } finally {
