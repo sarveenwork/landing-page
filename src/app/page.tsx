@@ -54,7 +54,14 @@ export default function Home() {
       params.append('email', formData.email);
       params.append('business', formData.business);
 
-      const response = await fetch('https://script.google.com/macros/s/AKfycbzvE5iVOQzeU15VwjZqeyqjSVspcrfUuTKIaZ7dLgx1Rvar54IAE30j_vKSNOPPcRH6/exec', {
+      console.log('Submitting form data:', {
+        name: formData.name,
+        phone: formData.phone,
+        email: formData.email,
+        business: formData.business
+      });
+
+      const response = await fetch('https://script.google.com/macros/s/AKfycbyut9PYhIVidEmiGhk2yQpW7lI41bP_ahKeQw94gCq9x8In2MbVg1U-pL8J9eVik4nc/exec', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
@@ -62,13 +69,20 @@ export default function Home() {
         body: params.toString(),
       });
 
+      console.log('Response status:', response.status);
+      console.log('Response ok:', response.ok);
+
       if (response.ok) {
+        const responseText = await response.text();
+        console.log('Response text:', responseText);
         setSubmitStatus('success');
         setFormData({ name: '', phone: '', email: '', business: '' });
       } else {
+        console.error('Response not ok:', response.status, response.statusText);
         setSubmitStatus('error');
       }
-    } catch {
+    } catch (error) {
+      console.error('Fetch error:', error);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
