@@ -174,12 +174,12 @@ export default function Home() {
             >
               <div className="w-16 h-16 bg-gradient-to-r from-green-400 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-6">
                 <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                 </svg>
               </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-4">Appointment Booking</h3>
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-4">Weekly Performance Reports</h3>
               <p className="text-gray-300 leading-relaxed">
-                Seamlessly schedule meetings with qualified leads through our integrated booking system.
+                Get detailed weekly reports on campaign performance, lead quality, and ROI to track your success.
               </p>
             </motion.div>
           </motion.div>
@@ -213,15 +213,15 @@ export default function Home() {
                 },
                 {
                   question: "What's included in your lead generation service?",
-                  answer: "Our service includes ad campaign setup, landing page optimization, lead qualification, appointment scheduling, and monthly performance reports."
-                },
-                {
-                  question: "Do you work with businesses in any industry?",
-                  answer: "Yes! We've successfully generated leads for businesses across various industries including healthcare, professional services, e-commerce, and local businesses."
+                  answer: "Our service includes ad campaign setup, landing page optimization, lead qualification, weekly performance reports, and ongoing optimization based on your budget."
                 },
                 {
                   question: "What's the minimum contract length?",
-                  answer: "We work on a month-to-month basis with no long-term contracts. You can pause or cancel anytime with 30 days notice."
+                  answer: "We work together for 3 months to ensure you get the results you want. There's no long-term contract, but we need this time to properly optimize your campaigns and deliver consistent results."
+                },
+                {
+                  question: "How much do I need to spend on ad campaigns?",
+                  answer: "Your ad campaign budget is entirely up to you. We work with your budget to maximize results, whether it's $500/month or $5000/month. We'll recommend the optimal spend based on your goals."
                 }
               ].map((faq, index) => (
                 <motion.div
