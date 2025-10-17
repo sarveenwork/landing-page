@@ -54,13 +54,6 @@ export default function Home() {
       params.append('email', formData.email);
       params.append('business', formData.business);
 
-      console.log('Submitting form data:', {
-        name: formData.name,
-        phone: formData.phone,
-        email: formData.email,
-        business: formData.business
-      });
-
       const response = await fetch('https://script.google.com/macros/s/AKfycbw1Vkv8B2xTnSmB670_LmY5JKMLXY-B_Lmyxc34xT2KzIZWQ_50qRKTE4hsXpaAvybo/exec', {
         method: 'POST',
         mode: 'cors',
@@ -70,16 +63,11 @@ export default function Home() {
         body: params.toString(),
       });
 
-      console.log('Response status:', response.status);
-      console.log('Response ok:', response.ok);
-
       if (response.ok) {
         const responseText = await response.text();
-        console.log('Response text:', responseText);
         setSubmitStatus('success');
         setFormData({ name: '', phone: '', email: '', business: '' });
       } else {
-        console.error('Response not ok:', response.status, response.statusText);
         setSubmitStatus('error');
       }
     } catch (error) {
