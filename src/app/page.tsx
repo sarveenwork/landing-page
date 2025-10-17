@@ -47,27 +47,24 @@ export default function Home() {
     setSubmitStatus('');
 
     try {
-      // Create URL-encoded form data for Google Apps Script
-      const params = new URLSearchParams();
-      params.append('name', formData.name);
-      params.append('phone', formData.phone);
-      params.append('email', formData.email);
-      params.append('business', formData.business);
+      console.log('Submitting form data:', formData);
 
-      const response = await fetch('https://script.google.com/macros/s/AKfycbw1Vkv8B2xTnSmB670_LmY5JKMLXY-B_Lmyxc34xT2KzIZWQ_50qRKTE4hsXpaAvybo/exec', {
+      const response = await fetch('https://script.google.com/macros/s/AKfycbyrtY-86zq8UoTxnMLoGz_NWis6PFhmv2NUdFh1ayK3fuOq88mUCkIZcygi0iLhBysE/exec', {
         method: 'POST',
-        mode: 'cors',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: params.toString(),
+        body: new URLSearchParams(formData).toString(),
       });
 
-      if (response.ok) {
-        const responseText = await response.text();
+      const result = await response.json();
+      console.log('Response:', result);
+
+      if (response.ok && result.success) {
         setSubmitStatus('success');
         setFormData({ name: '', phone: '', email: '', business: '' });
       } else {
+        console.error('Submission failed:', result.error);
         setSubmitStatus('error');
       }
     } catch (error) {
@@ -371,7 +368,15 @@ export default function Home() {
                   animate={{ opacity: 1, y: 0 }}
                   className="bg-green-500/20 border border-green-500/50 rounded-lg p-4 text-green-300 text-center"
                 >
-                  Thank you! We&apos;ll be in touch within 24 hours to schedule your call.
+                  <div className="space-y-2">
+                    <p className="font-semibold">Thank you for your interest!</p>
+                    <p>We&apos;ll be in touch within 24 hours to schedule your call.</p>
+                    {formData.email && (
+                      <p className="text-sm opacity-90">
+                        Check your email for a confirmation message.
+                      </p>
+                    )}
+                  </div>
                 </motion.div>
               )}
 
