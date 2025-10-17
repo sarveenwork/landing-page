@@ -47,9 +47,7 @@ export default function Home() {
     setSubmitStatus('');
 
     try {
-      console.log('Submitting form data:', formData);
-
-      const response = await fetch('https://script.google.com/macros/s/AKfycbxmve80BqxMlEX1BAkHTi0Fl2YLYI4sLSKLcak0n-RARZ6OOACLpERNuJJ7UREMPsbx/exec', {
+      const response = await fetch('https://script.google.com/macros/s/AKfycbyZitYoipu3MBZ_FG15r3YxixJj8qZXWyIErJPeU6zZPlEabqHQDQ29gXW8NFPa59MN/exec', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
@@ -58,17 +56,14 @@ export default function Home() {
       });
 
       const result = await response.json();
-      console.log('Response:', result);
 
       if (response.ok && result.success) {
         setSubmitStatus('success');
         setFormData({ name: '', phone: '', email: '', business: '' });
       } else {
-        console.error('Submission failed:', result.error);
         setSubmitStatus('error');
       }
     } catch (error) {
-      console.error('Fetch error:', error);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
