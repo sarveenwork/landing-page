@@ -54,7 +54,7 @@ export default function Home() {
       params.append('email', formData.email);
       params.append('business', formData.business);
 
-      const response = await fetch('https://script.google.com/macros/s/AKfycbwLCzlVQYyZBgnEXirLUazxA0PbCD1Wwmhc5CnxQc8T7tpjqXjEBtSp-zwwivRE59pT/exec', {
+      const response = await fetch('https://script.google.com/macros/s/AKfycbzvE5iVOQzeU15VwjZqeyqjSVspcrfUuTKIaZ7dLgx1Rvar54IAE30j_vKSNOPPcRH6/exec', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
