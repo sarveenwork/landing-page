@@ -49,7 +49,7 @@ export default function Home() {
     try {
       console.log('Submitting form data:', formData);
 
-      const response = await fetch('https://script.google.com/macros/s/AKfycbyrtY-86zq8UoTxnMLoGz_NWis6PFhmv2NUdFh1ayK3fuOq88mUCkIZcygi0iLhBysE/exec', {
+      const response = await fetch('https://script.google.com/macros/s/AKfycbxmve80BqxMlEX1BAkHTi0Fl2YLYI4sLSKLcak0n-RARZ6OOACLpERNuJJ7UREMPsbx/exec', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
